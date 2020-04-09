@@ -14,9 +14,9 @@ if __name__ == "__main__":
 
     gameController = GameController(firstGame, redPlayer, yellowPlayer)
     print ("Playing with both players with random strategies")
-    gameController.simulateManyGames(2000)
+    gameController.simulateManyGames(1000)
 
-    model = ConnectFourModel(42, 3, 32, 100)
+    model = ConnectFourModel(42, 3, 50, 100)
     model.train(gameController.getTrainingHistory())
 
     redNeuralPlayer = Player(RED_PLAYER_VAL, strategy='model', model=model)

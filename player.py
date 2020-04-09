@@ -14,7 +14,7 @@ class Player:
 
 
     def getMove(self, availableMoves, board):
-        if self.strategy:
+        if self.strategy == "random":
             return availableMoves[random.randrange(0, len(availableMoves))]
         else:
             maxValue = 0
@@ -23,9 +23,9 @@ class Player:
                 boardCopy = copy.deepcopy(board)
                 boardCopy[availableMove[0]][availableMove[1]] = self.value
                 if self.value == RED_PLAYER_VAL:
-                    value = self.model.predict(boardCopy, 0)
-                else:
                     value = self.model.predict(boardCopy, 2)
+                else:
+                    value = self.model.predict(boardCopy, 0)
                 if value > maxValue:
                     maxValue = value
                     bestMove = availableMove
